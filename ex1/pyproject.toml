@@ -1,0 +1,18 @@
+[project]
+name = "loading"
+version = "0.1.0"
+description = "Exercise 1: Loading Programs - Matrix data analysis tool"
+authors = [{ name = "Noah Robinson", email = "norobins@student.42berlin.de" }]
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.3",
+    "numpy>=1.26",
+    "matplotlib>=3.9",
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
