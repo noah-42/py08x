@@ -1,23 +1,13 @@
 #!/usr/bin/env python3
 import os
 import sys
+from dotenv import load_dotenv
 
 # Setting up a virtual environment and install
 #   requirements:
 # python3 -m venv .venv
 # source .venv/bin/activate
 # pip install -r requirements.txt
-
-
-def load_dotenv() -> bool:
-    try:
-        from dotenv import load_dotenv as _load
-
-        _load()
-        return True
-    except ImportError:
-        return False
-
 
 CONFIG_DEFAULTS: dict[str, str | None] = {
     "MATRIX_MODE": "development",
@@ -183,6 +173,7 @@ def print_security_report(
 
 
 def main() -> int:
+    load_dotenv()
     print("\nORACLE STATUS: Reading the Matrix...")
     config, dotenv_loaded, using_defaults = get_config()
 
