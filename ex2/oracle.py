@@ -19,8 +19,8 @@ CONFIG_DEFAULTS: dict[str, str | None] = {
 
 
 def get_config() -> tuple[dict[str, str], bool, list[str]]:
-    dotenv_loaded = load_dotenv()
     config: dict[str, str] = {}
+    dotenv_loaded = load_dotenv()
     using_defaults: list[str] = []
 
     for key, default in CONFIG_DEFAULTS.items():
@@ -77,7 +77,7 @@ def check_env_file() -> tuple[bool, str]:
     return True, ".env file present but NOT in .gitignore"
 
 
-def show_dev_vs_prod(config: dict[str, str]) -> None:
+def show_current_settings(config: dict[str, str]) -> None:
     mode = config.get("MATRIX_MODE", "development").lower()
     zion_url = config.get("ZION_ENDPOINT", "unset")
     print("\n" + "=" * 50)
@@ -173,7 +173,6 @@ def print_security_report(
 
 
 def main() -> int:
-    load_dotenv()
     print("\nORACLE STATUS: Reading the Matrix...")
     config, dotenv_loaded, using_defaults = get_config()
 
@@ -192,7 +191,7 @@ def main() -> int:
 
     print()
     print("-" * 75)
-    show_dev_vs_prod(config)
+    show_current_settings(config)
     print()
 
     return 0 if validation_ok else 1
